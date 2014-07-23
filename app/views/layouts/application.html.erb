@@ -1,28 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SHiMed</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %>">
-
-    <div id="banner">
-      <%= image_tag("logo.jpg", alt:"Gobierno Venezuela", size:"250x100") %>
-      <%= @page_title || "SHiMed" %>
-    </div>
-
-    <div id="columns">
-      <div id="side">
-        <ul>
-          <li><%= link_to "Inicio", static_path, :class => 'link_to_style' %></li>
-          <li><%= link_to "Directorio Médico", medicos_path, :class => 'link_to_style' %></li>
-          <li><%= link_to "Directorio de Centros de Salud", centro_saluds_path, class: "link_to_style" %></li>
-        </ul>
+    <!-- Site header and navigation -->
+    <header class="top" role="header">
+        <div class="container">
+           <!-- <a href="#" class="navbar-brand pull-left"> --><%= link_to "SHiMed", static_path, :class => 'navbar-brand pull-left' %>
+               <!--SHiMed-->
+            <!--</a>-->
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <nav class="navbar-collapse collapse" role="navigation">
+                <ul class="navbar-nav nav">
+                    <li><%= link_to "Inicio", static_index_path, :class => 'a' %></li>
+                    <li><%= link_to "Directorio Médico", medicos_path, :class => 'a'%></li>
+                    <li><%= link_to "Directorio de Centros de Salud", centro_saluds_path, :class=>'a' %></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Site banner -->
+    <div class="banner">
+      <div class="container">
+        <h1>SHiMed - Red de centros de salud y citas médicas</h1>
+        <p>Una red para hacerte la vida mas fácil.</p>
       </div>
-      <div id="main">
-        <%= yield %>
+    </div>
+    <!-- Middle content section -->
+    <div class="middle">
+      <div class="container">
+        <div class="col-md-9 content">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <!-- Site footer -->
+    <div class="bottom">
+      <div class="container">
+        <div class="col-md-4">
+          <h3><span class="glyphicon glyphicon-user"></span> Ricardo Graterol</h3>
+          <p>Desarrollador de software.</p>
+        </div>
+        <div class="col-md-4">
+          <h3><span class="glyphicon glyphicon-tower"></span> Biosoft C.A.</h3>
+          <p>Empresa de desarrollo de software.</p>
+        </div>
+        <div class="col-md-4">
+        </div>
       </div>
     </div>
     <script src="includes/jquery/jquery-2.1.0.min.js"></script>
