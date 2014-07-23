@@ -1,0 +1,33 @@
+<h1>Listado de Centros de Salud</h1>
+
+<table>
+  <% @centro_saluds.each do |centro_salud| %>
+
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="list_description">
+          <dl>
+            <dt><b>Email: </b><%= centro_salud.email %></dt>
+            <dt><b>Nombre: </b><%= centro_salud.nombre %></dt>
+            <dt><b>RIF: </b><%= centro_salud.rif %></dt>
+            <dt><b>Descripcion: </b><%= truncate(strip_tags(centro_salud.descripcion), length:50) %></dt>
+            <dt><b>Estado: </b><%= centro_salud.estado %></dt>
+            <dt><b>Ciudad: </b><%= centro_salud.ciudad %></dt>
+            <dt><b>Direccion: </b><%= truncate(strip_tags(centro_salud.direccion), length:50) %></dt>
+            <dt><b>Direccion Fiscal: </b><%= truncate(strip_tags(centro_salud.direccion_fiscal), length:50) %></dt>
+            <dt><b>Telefono: </b><%= centro_salud.telefono %></dt>
+            <dt><b>Fax: </b><%= centro_salud.fax %></dt>
+            <dt><b>Sitio Web: </b><%= centro_salud.sitio_web %></dt>
+          </dl>
+        </td>
+
+        <td><%= link_to 'Show', centro_salud %></td>
+        <td><%= link_to 'Edit', edit_centro_salud_path(centro_salud) %></td>
+        <td><%= link_to 'Destroy', centro_salud, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Centro salud', new_centro_salud_path %>

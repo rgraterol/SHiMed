@@ -1,0 +1,61 @@
+<%= form_for(@centro_salud) do |f| %>
+  <% if @centro_salud.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@centro_salud.errors.count, "error") %> prohibited this centro_salud from being saved:</h2>
+
+      <ul>
+      <% @centro_salud.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :rif %><br>
+    <%= f.text_field :rif %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcion , rows: 6 %>
+  </div>
+  <div class="field">
+    <%= f.label :estado %><br>
+    <%= f.text_field :estado %>
+  </div>
+  <div class="field">
+    <%= f.label :ciudad %><br>
+    <%= f.text_field :ciudad %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %><br>
+    <%= f.text_area :direccion , rows: 6%>
+  </div>
+  <div class="field">
+    <%= f.label :direccion_fiscal %><br>
+    <%= f.text_area :direccion_fiscal , rows: 6 %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono %><br>
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label :fax %><br>
+    <%= f.text_field :fax %>
+  </div>
+  <div class="field">
+    <%= f.label :sitio_web %><br>
+    <%= f.text_field :sitio_web %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SHiMed</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller.controller_name %>">
+
+    <div id="banner">
+      <%= image_tag("logo.jpg", alt:"Gobierno Venezuela", size:"250x100") %>
+      <%= @page_title || "SHiMed" %>
+    </div>
+
+    <div id="columns">
+      <div id="side">
+        <ul>
+          <li><%= link_to "Inicio", static_path, :class => 'link_to_style' %></li>
+          <li><%= link_to "Directorio Médico", medicos_path, :class => 'link_to_style' %></li>
+          <li><%= link_to "Directorio de Centros de Salud", centro_saluds_path, class: "link_to_style" %></li>
+        </ul>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
+    <script src="includes/jquery/jquery-2.1.0.min.js"></script>
+    <script src="includes/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
