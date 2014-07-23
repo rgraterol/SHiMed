@@ -28,6 +28,10 @@
     <%= f.text_field :cedula %>
   </div>
   <div class="field">
+    <%= f.label :especialidad %><br>
+    <%= f.text_field :especialidad %>
+  </div>
+  <div class="field">
     <%= f.label :direccion %><br>
     <%= f.text_area :direccion %>
   </div>
@@ -57,7 +61,7 @@
   </div>
   <div class="field">
     <%= f.label :cv %><br>
-    <%= f.text_field :cv %>
+    <%= f.text_area :cv, rows: 8 %>
   </div>
   <div class="field">
     <%= f.label :url %><br>

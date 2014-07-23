@@ -21,6 +21,11 @@
 </p>
 
 <p>
+  <strong>Especialidad:</strong>
+  <%= @medico.especialidad %>
+</p>
+
+<p>
   <strong>Direccion:</strong>
   <%= @medico.direccion %>
 </p>
@@ -66,4 +71,5 @@
 </p>
 
 <%= link_to 'Edit', edit_medico_path(@medico) %> |
-<%= link_to 'Back', medicos_path %>
+<%= link_to 'Back', medicos_path %> |
+<%= link_to 'Destroy', @medico, method: :delete, data: { confirm: 'Are you sure?' } %>

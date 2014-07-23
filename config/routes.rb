@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :usuarios
+
   resources :medicos
 
   get 'static/index'

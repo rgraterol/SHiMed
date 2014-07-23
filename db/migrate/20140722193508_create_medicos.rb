@@ -11,8 +11,9 @@ class CreateMedicos < ActiveRecord::Migration
       t.string :telefono_oficina
       t.string :sexo
       t.date :fecha_nacimiento
+      t.string :especialidad
       t.string :cmv
-      t.string :cv
+      t.text :cv
       t.string :url
 
       t.timestamps

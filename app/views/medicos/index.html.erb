@@ -1,44 +1,21 @@
 <h1>Directorio Médico</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Cedula</th>
-      <th>Direccion</th>
-      <th>Telefono casa</th>
-      <th>Telefono celular</th>
-      <th>Telefono oficina</th>
-      <th>Sexo</th>
-      <th>Fecha nacimiento</th>
-      <th>Cmv</th>
-      <th>Cv</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<table class="table table-striped table-bordered table-condensed">
   <tbody>
+    <tr>
+      <td><b>Nombre y Apellido</b></td>
+      <td><b>Especialidad</b></td>
+      <td><b>Teléfono Celular</b></td>
+      <td><b>Curriculum Vitae</b></td>
+      <td><b>Página Web</b></td>
+    </tr>
     <% @medicos.each do |medico| %>
       <tr>
-        <td><%= medico.email %></td>
-        <td><%= medico.nombre %></td>
-        <td><%= medico.apellido %></td>
-        <td><%= medico.cedula %></td>
-        <td><%= medico.direccion %></td>
-        <td><%= medico.telefono_casa %></td>
+        <td><%= link_to medico.nombre+" "+medico.apellido, medico, :class => 'h4' %></td>
+        <td><%= medico.especialidad %></td>
         <td><%= medico.telefono_celular %></td>
-        <td><%= medico.telefono_oficina %></td>
-        <td><%= medico.sexo %></td>
-        <td><%= medico.fecha_nacimiento %></td>
-        <td><%= medico.cmv %></td>
-        <td><%= medico.cv %></td>
-        <td><%= medico.url %></td>
-        <td><%= link_to 'Show', medico %></td>
-        <td><%= link_to 'Edit', edit_medico_path(medico) %></td>
-        <td><%= link_to 'Destroy', medico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= truncate(strip_tags(medico.cv), length: 100) %></td>
+        <td><a href="<%= medico.url %>"><%= medico.url %></a></td>
       </tr>
     <% end %>
   </tbody>
@@ -46,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Medico', new_medico_path %>
+<%= link_to 'Nuevo Medico', new_medico_path %>
