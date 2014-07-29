@@ -1,7 +1,6 @@
 class CreateCentroSaluds < ActiveRecord::Migration
   def change
     create_table :centro_saluds do |t|
-      t.string :email
       t.string :nombre
       t.string :rif
       t.text :descripcion
@@ -12,6 +11,7 @@ class CreateCentroSaluds < ActiveRecord::Migration
       t.string :telefono
       t.string :fax
       t.string :sitio_web
+      t.references :usuario, default:0
 
       t.timestamps
     end

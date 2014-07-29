@@ -1,0 +1,1 @@
+json.extract! @medico, :centro_salud, :servicio_medico, :modalidad_consulta, :horario_consulta, :precio_consulta, :telefono_consultorio

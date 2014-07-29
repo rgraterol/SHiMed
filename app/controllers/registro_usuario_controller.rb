@@ -1,0 +1,3 @@
+class RegistroUsuarioController < ApplicationController
+
+end

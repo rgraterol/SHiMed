@@ -1,0 +1,33 @@
+<h1 class="text-center v-center">Servicios - Médico <%= @medico.nombre %></h1>
+
+<p>
+  <strong>Centro de Salud:</strong>
+  <%= @medico.centro_salud %>
+</p>
+
+<p>
+  <strong>Servicio Médico Ofrecido:</strong>
+  <%= @medico.servicio_medico %>
+</p>
+
+<p>
+  <strong>Modalidad de Consulta:</strong>
+  <%= @medico.modalidad_consulta %>
+</p>
+
+<p>
+  <strong>Horario de Consulta:</strong>
+  <%= @medico.horario_consulta %>
+</p>
+
+<p>
+  <strong>Precio de Consulta:</strong>
+  <%= @medico.precio_consulta %>
+</p>
+
+<p>
+  <strong>Teléfono Consultorio:</strong>
+  <%= @medico.telefono_consultorio %>
+</p>
+
+<%= link_to 'Atras', medico_path(@medico), :class=> 'btn btn-default' %>

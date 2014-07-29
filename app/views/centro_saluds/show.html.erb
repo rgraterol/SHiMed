@@ -1,12 +1,6 @@
-<p id="notice"><%= notice %></p>
-
+<h1 class="text-center v-center"><%= @centro_salud.nombre %></h1>
 <p>
-  <strong>Email:</strong>
-  <%= @centro_salud.email %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
+  <strong>Nombre de Centro de Salud:</strong>
   <%= @centro_salud.nombre %>
 </p>
 
@@ -55,5 +49,3 @@
   <%= @centro_salud.sitio_web %>
 </p>
 
-<%= link_to 'Edit', edit_centro_salud_path(@centro_salud) %> |
-<%= link_to 'Back', centro_saluds_path %>

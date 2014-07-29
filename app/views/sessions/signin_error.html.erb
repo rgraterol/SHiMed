@@ -1,0 +1,9 @@
+
+  <h1>
+    <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: name %>
+    <% end %></h1>
+  <%= render :template =>  'sessions/signin' %>
+  <!--<% if !flash.nil? %>
+      <%= link_to 'Back', static_index_path, :class => 'btn btn-default btn-lg active'  %>
+  <% end %>-->

@@ -12,14 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
     <%= f.label :rif %><br>
     <%= f.text_field :rif %>
   </div>
@@ -55,7 +47,8 @@
     <%= f.label :sitio_web %><br>
     <%= f.text_field :sitio_web %>
   </div>
+  <%= hidden_field_tag 'usuario_id_aux', params[:id] %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Registro Centro de Salud", data: { confirm: 'Seguro que desea guardar los cambios?' } %>
   </div>
 <% end %>

@@ -1,9 +1,136 @@
-<p id="notice"><%= notice %></p>
-
+<h1 class="text-center v-center"><%= @usuario.nombre %></h1>
 <p>
-  <strong>Email:</strong>
+  <span class="label label-primary">Email:</span>
   <%= @usuario.email %>
 </p>
+<div class="col-lg-12 text-center v-center">
+    <% if @usuario.tipo_usuario == nil %>
+        <h2>No has completado tu registro, terminalo entrando en Editar Tipo de Cuenta</h2><br><br>
+        <div><span class="glyphicon glyphicon-briefcase"></span>              <%= link_to "Editar Tipo de Cuenta", phase1_path(@usuario), :class => 'btn btn-default' %></div><br>
+    <% end %>
+</div>
 
-<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
-<%= link_to 'Back', usuarios_path %>
+<% if @usuario.tipo_usuario == "1" %>
+    <p>
+      <strong>Nombre:</strong>
+      <%= @usuario.nombre %>
+    </p>
+
+    <p>
+      <strong>Apellido:</strong>
+      <%= @medico.apellido %>
+    </p>
+
+    <p>
+      <strong>Cedula:</strong>
+      <%= @medico.cedula %>
+    </p>
+
+    <p>
+      <strong>Especialidad:</strong>
+      <%= @medico.especialidad %>
+    </p>
+
+    <p>
+      <strong>Direccion:</strong>
+      <%= @medico.direccion %>
+    </p>
+
+    <p>
+      <strong>Telefono casa:</strong>
+      <%= @medico.telefono_casa %>
+    </p>
+
+    <p>
+      <strong>Telefono celular:</strong>
+      <%= @medico.telefono_celular %>
+    </p>
+
+    <p>
+      <strong>Telefono oficina:</strong>
+      <%= @medico.telefono_oficina %>
+    </p>
+
+    <p>
+      <strong>Sexo:</strong>
+      <%= @medico.sexo %>
+    </p>
+
+    <p>
+      <strong>Fecha nacimiento:</strong>
+      <%= @medico.fecha_nacimiento %>
+    </p>
+
+    <p>
+      <strong>Número Colegio de Medicos:</strong>
+      <%= @medico.cmv %>
+    </p>
+
+    <p>
+      <strong>Curriculum Vitae:</strong>
+      <%= @medico.cv %>
+    </p>
+
+    <p>
+      <strong>Página Web:</strong>
+      <%= link_to @medico.url, @medico.url %>
+    </p>
+    <%= link_to 'Ver Servicios Medicos Ofrecidos', ver_servicios_medicos_path(@medico), { :class=> 'btn btn-lg btn-default', :style=> 'text: #FFFFFF;' }  %>
+<% end %>
+
+<% if @usuario.tipo_usuario == "2" %>
+    <p>
+      <strong>Nombre de Centro de Salud:</strong>
+      <%= @centro_salud.nombre %>
+    </p>
+
+    <p>
+      <strong>Rif:</strong>
+      <%= @centro_salud.rif %>
+    </p>
+
+    <p>
+      <strong>Descripcion:</strong>
+      <%= @centro_salud.descripcion %>
+    </p>
+
+    <p>
+      <strong>Estado:</strong>
+      <%= @centro_salud.estado %>
+    </p>
+
+    <p>
+      <strong>Ciudad:</strong>
+      <%= @centro_salud.ciudad %>
+    </p>
+
+    <p>
+      <strong>Direccion:</strong>
+      <%= @centro_salud.direccion %>
+    </p>
+
+    <p>
+      <strong>Direccion fiscal:</strong>
+      <%= @centro_salud.direccion_fiscal %>
+    </p>
+
+    <p>
+      <strong>Telefono:</strong>
+      <%= @centro_salud.telefono %>
+    </p>
+
+    <p>
+      <strong>Fax:</strong>
+      <%= @centro_salud.fax %>
+    </p>
+
+    <p>
+      <strong>Sitio web:</strong>
+      <%= @centro_salud.sitio_web %>
+    </p>
+
+<% end %>
+
+
+<!--<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
+<%= link_to 'Back', usuarios_path %>-->

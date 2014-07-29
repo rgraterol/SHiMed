@@ -1,13 +1,32 @@
-<h1>Listado de Centros de Salud</h1>
+<h1>Directorio de Centros de Salud</h1>
 
-<table>
+<table class="table table-striped table-bordered table-condensed">
+  <tbody>
+  <tr>
+    <td><b>Nombre de Centro</b></td>
+    <td><b>Ciudad</b></td>
+    <td><b>Telefono</b></td>
+    <td><b>Dirección</b></td>
+    <td><b>Página Web</b></td>
+  </tr>
+  <% @centro_saluds.each do |centro_salud| %>
+      <tr>
+        <td><%= link_to centro_salud.nombre, centro_salud, :class => 'h4' %></td>
+        <td><%= centro_salud.ciudad %></td>
+        <td><%= centro_salud.telefono %></td>
+        <td><%= truncate(strip_tags(centro_salud.direccion), length: 100) %></td>
+        <td><a href="<%= centro_salud.sitio_web %>"><%= centro_salud.sitio_web %></a></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<!-- <table>
   <% @centro_saluds.each do |centro_salud| %>
 
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td class="list_description">
           <dl>
-            <dt><b>Email: </b><%= centro_salud.email %></dt>
-            <dt><b>Nombre: </b><%= centro_salud.nombre %></dt>
             <dt><b>RIF: </b><%= centro_salud.rif %></dt>
             <dt><b>Descripcion: </b><%= truncate(strip_tags(centro_salud.descripcion), length:50) %></dt>
             <dt><b>Estado: </b><%= centro_salud.estado %></dt>
@@ -26,8 +45,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 <br>
 
-<%= link_to 'New Centro salud', new_centro_salud_path %>

@@ -8,6 +8,32 @@ Rails.application.routes.draw do
   resources :centro_saluds
 
   root 'static#index', as: 'static'
+
+  #Registro de Usuarios
+  get '/medic_register/:id' => 'medicos#new', as: :registro_medico
+  get '/centro_register/:id' => 'centro_saluds#new', as: :registro_centro
+  get '/ad%/xas/159/qw%/:id' => 'usuarios#registro_inicio', as: :phase1
+  get '/oq/q2s/2/qw%/:remember_token' => 'usuarios#pre_process', as: :pre_pro
+  get '/usuarios/registro_inicio'
+  get '/emailcheck/:id', to: 'static#emailcheck', as: :mailcheck
+
+  #session
+  post '/sessions/' => 'sessions#create', as: :sessions
+  delete '/signout/' => 'sessions#destroy', as: :sessions_destroy
+  get '/error/' => 'sessions#signin_error', as: :session_error
+  match '/signin', to: 'sessions#signin', via: 'get'
+
+  #Usuario
+  get '/ajustes/:remember_token' => 'usuarios#ajustes', as: :ajustes
+  get '/ajustes/mod_info_cuenta/:id' => 'usuarios#modificar_info', as: :modificar_info
+  get '/austes/mod_info_cuenta/edit_nombre/:id' => 'usuarios#edit_nombre', as: :edit_nombre
+  get '/mod_info_cuenta/' => 'static#info_cambiada', as: :info_cambiada
+
+  #Medicos
+  get '/new_servicios_medicos/:id' => 'medicos#registrar_servicios_medicos', as: :registrar_servicios_medicos
+  get '/servicios_medicos/:id' => 'medicos#ver_servicios_medicos', as: :ver_servicios_medicos
+  get '/editar_servicios_medicos/:id' => 'medicos#editar_servicios_medicos', as: :editar_servicios_medicos
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

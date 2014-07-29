@@ -23,6 +23,20 @@
                     <li><%= link_to "Inicio", static_index_path, :class => 'a' %></li>
                     <li><%= link_to "Directorio Médico", medicos_path, :class => 'a'%></li>
                     <li><%= link_to "Directorio de Centros de Salud", centro_saluds_path, :class=>'a' %></li>
+                    <li>
+                      <% if signed_in? %>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= @current_usuario.nombre %><b class="caret"></b></a>
+                          <ul class="dropdown-menu" style = 'color: black'>
+                            <li><%= link_to "Perfíl", current_usuario  %></li>
+                            <li><%= link_to "Ajustes", ajustes_path(@current_usuario.remember_token) ,:class=>'A' %></li>
+                            <li class="divider"></li>
+                            <li><%= link_to "Cerrar Sesión", sessions_destroy_path, method: "delete" %></li>
+                          </ul>
+                       <% else %>
+                          <li><%= link_to "Registro", new_usuario_url, :class=>'a' %></li>
+                          <li><%= link_to "Iniciar Sesión", signin_path, :class => 'a' %></li>
+                       <% end %>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -34,30 +48,45 @@
         <p>Una red para hacerte la vida mas fácil.</p>
       </div>
     </div>
+
     <!-- Middle content section -->
     <div class="middle">
       <div class="container">
-        <div class="col-md-9 content">
+        <div class="col-lg">
           <%= yield %>
+        </div>
+        <div class="col-md-3">
+         <!-- <h2>Recursos</h2>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="http://www.mpps.gob.ve/" target="_blank">Ministerio del Poder Popular para la Salud</a></li>
+            <li><a href="http://www.intt.gob.ve/intt/" target="_blank">INTT</a></li>
+            <li><a href="http://iahula.merida.gob.ve/" target="_blank">IHULA</a></li>
+            <li><a href="http://www.ivss.gov.ve/" target="_blank">Instituto Venezulano de los Seguros Sociales</a></li>
+            <li><a href="http://amzn.to/1oXAbu6" target="_blank">US: HTML & CSS: Design and Build Web Sites</a></li>
+            <li><a href="http://amzn.to/1lESF2w" target="_blank">US: Bootstrap Site Blueprints</a></li>
+          </ul>
+        </div>-->
         </div>
       </div>
     </div>
+
     <!-- Site footer -->
     <div class="bottom">
       <div class="container">
         <div class="col-md-4">
-          <h3><span class="glyphicon glyphicon-user"></span> Ricardo Graterol</h3>
+          <h3><span class="glyphicon glyphicon-user"></span> Ricardo Xavier Graterol</h3>
           <p>Desarrollador de software.</p>
         </div>
         <div class="col-md-4">
           <h3><span class="glyphicon glyphicon-tower"></span> Biosoft C.A.</h3>
-          <p>Empresa de desarrollo de software.</p>
+          <p>Ingeniería y desarrollo de software.</p>
         </div>
         <div class="col-md-4">
         </div>
       </div>
     </div>
-    <script src="includes/jquery/jquery-2.1.0.min.js"></script>
-    <script src="includes/bootstrap/js/bootstrap.min.js"></script>
+      <script src="includes/jquery/jquery-2.1.0.min.js"></script>
+      <script src="includes/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

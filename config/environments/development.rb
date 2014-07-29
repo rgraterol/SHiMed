@@ -34,4 +34,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  SHiMed::Application.routes.default_url_options[:host] = "localhost:3000/"
+  SHiMed::Application.configure do
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address: "smtp.gmail.com",
+        port: 587,
+        domain: "www.shimed.com",
+        authentication: "plain",
+        user_name: "pruebasJuan837@gmail.com",
+        password: "tetra714217",
+        enable_starttls_auto: true
+    }
+  end
 end

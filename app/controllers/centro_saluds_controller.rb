@@ -25,14 +25,22 @@ class CentroSaludsController < ApplicationController
   # POST /centro_saluds.json
   def create
     @centro_salud = CentroSalud.new(centro_salud_params)
+    @centro_salud.usuario_id = params[:usuario_id_aux]
+    @usuario=Usuario.find(params[:usuario_id_aux])
+    @usuario.tipo_usuario = 2
+    @centro_salud.nombre = @usuario.nombre
 
     respond_to do |format|
       if @centro_salud.save
-        format.html { redirect_to @centro_salud, notice: 'Centro salud was successfully created.' }
-        format.json { render :show, status: :created, location: @centro_salud }
+        @usuario.rol_id = @centro_salud.id
+        if @usuario.save
+          format.html { redirect_to @centro_salud, notice: 'Centro salud was successfully created.' }
+          format.json { render :show, status: :created, location: @centro_salud }
+        end
       else
-        format.html { render :new }
+        format.html { redirect_to  registro_centro_path(@usuario) }
         format.json { render json: @centro_salud.errors, status: :unprocessable_entity }
+
       end
     end
   end

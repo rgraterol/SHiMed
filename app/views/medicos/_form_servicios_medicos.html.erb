@@ -1,0 +1,43 @@
+<%= form_for(@medico) do |f| %>
+    <% if @medico.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@medico.errors.count, "error") %> prohibited this medico from being saved:</h2>
+
+          <ul>
+            <% @medico.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :centro_salud %><br>
+      <%= f.text_field :centro_salud %>
+    </div>
+    <div class="field">
+      <%= f.label :servicio_medico %><br>
+      <%= f.text_field :servicio_medico %>
+    </div>
+    <div class="field">
+      <%= f.label :modalidad_consulta %><br>
+      <%= f.text_field :modalidad_consulta %>
+    </div>
+    <div class="field">
+      <%= f.label :horario_consulta %><br>
+      <%= f.text_area :horario_consulta, rows: 10 %>
+    </div>
+    <div class="field">
+      <%= f.label :precio_consulta %><br>
+      <%= f.text_field :precio_consulta %>
+    </div>
+    <div class="field">
+      <%= f.label :telefono_consultorio %><br>
+      <%= f.text_field :telefono_consultorio %>
+    </div>
+    <%= hidden_field_tag 'usuario_id_aux', params[:id] %>
+
+    <div class="actions">
+      <%= f.submit "Actualizar Servicios Médicos", data: { confirm: 'Seguro que desea guardar los cambios?' }%>
+    </div>
+<% end %>

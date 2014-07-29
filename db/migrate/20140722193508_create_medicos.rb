@@ -1,7 +1,6 @@
 class CreateMedicos < ActiveRecord::Migration
   def change
     create_table :medicos do |t|
-      t.string :email
       t.string :nombre
       t.string :apellido
       t.string :cedula
@@ -15,6 +14,16 @@ class CreateMedicos < ActiveRecord::Migration
       t.string :cmv
       t.text :cv
       t.string :url
+      t.references :usuario, default: 0
+
+
+      #Servicios Médicos
+      t.string :centro_salud
+      t.string :servicio_medico
+      t.string :modalidad_consulta
+      t.text :horario_consulta
+      t.string :precio_consulta
+      t.string :telefono_consultorio
 
       t.timestamps
     end

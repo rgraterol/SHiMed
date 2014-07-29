@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722193508) do
+ActiveRecord::Schema.define(version: 20140728150527) do
 
   create_table "centro_saluds", force: true do |t|
-    t.string   "email"
     t.string   "nombre"
     t.string   "rif"
     t.text     "descripcion"
@@ -25,12 +24,12 @@ ActiveRecord::Schema.define(version: 20140722193508) do
     t.string   "telefono"
     t.string   "fax"
     t.string   "sitio_web"
+    t.integer  "usuario_id",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "medicos", force: true do |t|
-    t.string   "email"
     t.string   "nombre"
     t.string   "apellido"
     t.string   "cedula"
@@ -44,8 +43,32 @@ ActiveRecord::Schema.define(version: 20140722193508) do
     t.string   "cmv"
     t.text     "cv"
     t.string   "url"
+    t.integer  "usuario_id",           default: 0
+    t.string   "centro_salud"
+    t.string   "servicio_medico"
+    t.string   "modalidad_consulta"
+    t.text     "horario_consulta"
+    t.string   "precio_consulta"
+    t.string   "telefono_consultorio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "usuarios", force: true do |t|
+    t.string   "nombre"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "tipo_usuario"
+    t.integer  "medico_id",       default: 0
+    t.integer  "centro_salud_id", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "remember_token"
+    t.string   "register_flag",   default: "0"
+    t.integer  "rol_id",          default: 0
+  end
+
+  add_index "usuarios", ["remember_token"], name: "index_usuarios_on_remember_token"
+  add_index "usuarios", ["rol_id"], name: "index_usuarios_on_rol_id"
 
 end

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h1>Bienvenido a SHiMed <%= @usuario.nombre %></h1>
+
+<p>Gracias por registrarte en SHiMed, la red nacional de citas e historias médicas, realiza click acá para confirmar tu registro:<br>
+
+<a><%= url_for(controller: 'usuarios', action: 'pre_process', remember_token: @usuario.remember_token, :host => "localhost:3000", only_path: false)%></a>
+
+<br><br>Que tengas un buen día.</p>
+</body>
+</html>

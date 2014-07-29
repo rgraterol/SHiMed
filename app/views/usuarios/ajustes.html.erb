@@ -1,0 +1,47 @@
+<div class="container-full">
+
+  <div class="row">
+
+    <div class="col-lg-12 text-center v-center">
+
+      <h1>Ajustes</h1>
+
+      <br>
+
+      <form class="col-lg-12">
+
+      </form>
+      <% if @usuario.tipo_usuario == nil %>
+          <h2>No has completado tu registro, terminalo entrando en Editar Tipo de Cuenta</h2><br><br>
+          <div><span class="glyphicon glyphicon-briefcase"></span>              <%= link_to "Editar Tipo de Cuenta", phase1_path(@usuario), :class => 'btn btn-default' %></div><br>
+      <% else %>
+          <% if @usuario.tipo_usuario == "1" %>
+              <div><span class="glyphicon glyphicon-briefcase"></span>              <%= link_to "Modificar Perfíl de Médico", edit_medico_path(@medico), :class => 'btn btn-default' %></div><br>
+              <div><span class="glyphicon glyphicon-list-alt"></span>              <%= link_to "Editar Servicios Médicos Ofrecidos", editar_servicios_medicos_path(@medico), :class => 'btn btn-default' %></div><br>
+          <% end %>
+
+          <% if @usuario.tipo_usuario == "2" %>
+              <div><span class="glyphicon glyphicon-briefcase"></span>              <%= link_to "Modificar Información de Centro de Salud", edit_centro_salud_path(@centro_salud), :class => 'btn btn-default' %></div><br>
+          <% end %>
+      <% end %>
+
+
+      <div><span class="glyphicon glyphicon-cog"></span>                <%= link_to "Modificar información de cuenta", modificar_info_path(@usuario), :class => 'btn btn-default' %></div></div>
+     <!-- <div><span class="glyphicon glyphicon-screenshot"></span>   <%= link_to "Cambiar Nombre de Cuenta", '#', :class => 'btn btn-default' %></div><br>
+      <div><span class="glyphicon glyphicon-cog"></span>   <%= link_to "Cambiar Contraseña", '#', :class=>'btn btn-default  ' %></div><br>
+      <div><span class="glyphicon glyphicon-envelope"></span>   <%= link_to "Modificar Correo", '#', :class => 'btn btn-default' %></div><br>
+       -->
+
+
+    </div>
+
+  </div> <!-- /row -->
+
+  <div class="row">
+
+
+  </div>
+
+  <br><br><br><br><br>
+
+</div>

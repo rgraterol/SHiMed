@@ -1,10 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @medico.email %>
-</p>
-
+<h1 class="text-center v-center"><%= @medico.nombre %></h1>
 <p>
   <strong>Nombre:</strong>
   <%= @medico.nombre %>
@@ -56,20 +50,20 @@
 </p>
 
 <p>
-  <strong>Cmv:</strong>
+  <strong>Número Colegio de Medicos:</strong>
   <%= @medico.cmv %>
 </p>
 
 <p>
-  <strong>Cv:</strong>
+  <strong>Curriculum Vitae:</strong>
   <%= @medico.cv %>
 </p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @medico.url %>
+  <strong>Página Web:</strong>
+  <%= link_to @medico.url, @medico.url %>
 </p>
+<br>
 
-<%= link_to 'Edit', edit_medico_path(@medico) %> |
-<%= link_to 'Back', medicos_path %> |
-<%= link_to 'Destroy', @medico, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Atras', medicos_path, :class=> 'btn btn-default' %>
+<%= link_to 'Ver Servicios Medicos Ofrecidos', ver_servicios_medicos_path(@medico), { :class=> 'btn btn-lg btn-primary', :style=> 'text: #FFFFFF;' }  %>

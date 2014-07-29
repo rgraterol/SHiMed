@@ -1,0 +1,67 @@
+<%= form_for(@medico) do |f| %>
+  <% if @medico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medico.errors.count, "error") %> prohibited this medico from being saved:</h2>
+
+      <ul>
+      <% @medico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :apellido %><br>
+    <%= f.text_field :apellido %>
+  </div>
+  <div class="field">
+    <%= f.label :cedula %><br>
+    <%= f.text_field :cedula %>
+  </div>
+  <div class="field">
+    <%= f.label :especialidad %><br>
+    <%= f.text_field :especialidad %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %><br>
+    <%= f.text_area :direccion %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono_casa %><br>
+    <%= f.text_field :telefono_casa %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono_celular %><br>
+    <%= f.text_field :telefono_celular %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono_oficina %><br>
+    <%= f.text_field :telefono_oficina %>
+  </div>
+  <div class="field">
+    <%= f.label :sexo %><br>
+    <%= f.text_field :sexo %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_nacimiento %><br>
+    <%= f.date_select :fecha_nacimiento %>
+  </div>
+  <div class="field">
+    <%= f.label :cmv %><br>
+    <%= f.text_field :cmv %>
+  </div>
+  <div class="field">
+    <%= f.label :cv %><br>
+    <%= f.text_area :cv, rows: 8 %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <%= hidden_field_tag 'usuario_id_aux', params[:id] %>
+
+  <div class="actions">
+    <%= f.submit "Actualizar Perfil", data: { confirm: 'Seguro que desea guardar los cambios?' }%>
+  </div>
+<% end %>
