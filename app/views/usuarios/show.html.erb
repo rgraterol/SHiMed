@@ -10,7 +10,7 @@
     <% end %>
 </div>
 
-<% if @usuario.tipo_usuario == "1" %>
+<% if @usuario.tipo_usuario == 1 %>
     <p>
       <strong>Nombre:</strong>
       <%= @usuario.nombre %>
@@ -75,10 +75,10 @@
       <strong>Página Web:</strong>
       <%= link_to @medico.url, @medico.url %>
     </p>
-    <%= link_to 'Ver Servicios Medicos Ofrecidos', ver_servicios_medicos_path(@medico), { :class=> 'btn btn-lg btn-default', :style=> 'text: #FFFFFF;' }  %>
+    <%= link_to 'Ver Servicios Medicos Ofrecidos', ver_servicios_medicos_path(@medico), { :class=> 'btn btn-lg btn-primary', :style=> 'text: #FFFFFF;' }  %>
 <% end %>
 
-<% if @usuario.tipo_usuario == "2" %>
+<% if @usuario.tipo_usuario == 2 %>
     <p>
       <strong>Nombre de Centro de Salud:</strong>
       <%= @centro_salud.nombre %>

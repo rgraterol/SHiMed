@@ -1,9 +1,14 @@
+<%- if flash.any? %>
+    <%- flash.keys.each do |flash_key| %>
+        <%- next if flash_key.to_s == 'timedout' %>
+        <h1 style="color: #f30000; <%= flash_key %>">
+          <a class="close" data-dismiss="alert" href="#"> x</a>
+          <%= flash.discard(flash_key) %>
+        </h1>
+    <%- end %>
+<%- end %>
 
-  <h1>
-    <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: name %>
-    <% end %></h1>
-  <%= render :template =>  'sessions/signin' %>
+<%= render :template =>  'sessions/signin' %>
   <!--<% if !flash.nil? %>
       <%= link_to 'Back', static_index_path, :class => 'btn btn-default btn-lg active'  %>
   <% end %>-->

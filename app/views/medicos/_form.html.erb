@@ -1,3 +1,13 @@
+<%- if flash.any? %>
+    <%- flash.keys.each do |flash_key| %>
+        <%- next if flash_key.to_s == 'timedout' %>
+        <div class="alert alert-success <%= flash_key %>">
+          <a class="close" data-dismiss="alert" href="#"> x</a>
+          <%= flash.discard(flash_key) %>
+        </div>
+    <%- end %>
+<%- end %>
+
 <%= form_for(@medico) do |f| %>
     <% if @medico.errors.any? %>
         <div id="error_explanation">
@@ -41,18 +51,18 @@
     </div>
     <div class="field">
       <%= f.label :sexo %><br>
-      <%= f.text_field :sexo %>
+      <%= f.select :sexo, options_for_select(['Masculino', 'Femenino']) %>
     </div>
     <div class="field">
       <%= f.label :fecha_nacimiento %><br>
       <%= f.date_select :fecha_nacimiento %>
     </div>
     <div class="field">
-      <%= f.label :cmv %><br>
-      <%= f.text_field :cmv %>
+        <%= f.label 'Número de Colegio de Médicos' %><br>
+        <%= f.text_field :cmv %>
     </div>
     <div class="field">
-      <%= f.label :cv %><br>
+      <%= f.label "Curriculum Vitae:" %><br>
       <%= f.text_area :cv, rows: 8 %>
     </div>
     <div class="field">

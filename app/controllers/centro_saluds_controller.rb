@@ -27,21 +27,36 @@ class CentroSaludsController < ApplicationController
     @centro_salud = CentroSalud.new(centro_salud_params)
     @centro_salud.usuario_id = params[:usuario_id_aux]
     @usuario=Usuario.find(params[:usuario_id_aux])
-    @usuario.tipo_usuario = 2
     @centro_salud.nombre = @usuario.nombre
 
     respond_to do |format|
-      if @centro_salud.save
-        @usuario.rol_id = @centro_salud.id
-        if @usuario.save
-          format.html { redirect_to @centro_salud, notice: 'Centro salud was successfully created.' }
-          format.json { render :show, status: :created, location: @centro_salud }
+      if not_update_tipo_usuario
+        if @centro_salud.save
+          @usuario.tipo_usuario = 2
+          @usuario.rol_id = @centro_salud.id
+          if @usuario.save
+            format.html { redirect_to @centro_salud }
+            #format.json { render :show, status: :created, location: @centro_salud }
+          else
+            @centro_salud.delete
+            @usuario.errors.each do  |name_, erro|
+              flash[name_] = erro
+            end
+            format.html { redirect_to  registro_centro_path(@usuario) }
+          end
+        else
+          @centro_salud.errors.each do |name_, erro|
+            flash[name_] = erro
+          end
+          format.html { redirect_to  registro_centro_path(@usuario) }
         end
       else
-        format.html { redirect_to  registro_centro_path(@usuario) }
-        format.json { render json: @centro_salud.errors, status: :unprocessable_entity }
-
+        @usuario.errors.each do |name_, erro|
+          flash[name_] = erro
+        end
+        format.html { redirect_to already_registered_path }
       end
+
     end
   end
 
@@ -50,11 +65,13 @@ class CentroSaludsController < ApplicationController
   def update
     respond_to do |format|
       if @centro_salud.update(centro_salud_params)
-        format.html { redirect_to @centro_salud, notice: 'Centro salud was successfully updated.' }
+        format.html { redirect_to @centro_salud }
         format.json { render :show, status: :ok, location: @centro_salud }
       else
+        @centro_salud.errors.each do |name_, erro|
+          flash[name_] = erro
+        end
         format.html { render :edit }
-        format.json { render json: @centro_salud.errors, status: :unprocessable_entity }
       end
     end
   end

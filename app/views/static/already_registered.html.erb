@@ -1,0 +1,10 @@
+<% if flash.presence %>
+
+    <h3 style="color: #f30000;">
+      <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: name %>
+      <% end %>
+    </h3>
+
+<% end %>
+<%= link_to "Ir a Perfíl", current_usuario, :class=>"btn btn-default"  %>

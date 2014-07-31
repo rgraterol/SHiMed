@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   get '/servicios_medicos/:id' => 'medicos#ver_servicios_medicos', as: :ver_servicios_medicos
   get '/editar_servicios_medicos/:id' => 'medicos#editar_servicios_medicos', as: :editar_servicios_medicos
 
+  #Estaticas
+  get '/already_registered/' => 'static#already_registered', as: :already_registered
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

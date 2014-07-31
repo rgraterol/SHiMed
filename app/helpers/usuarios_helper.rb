@@ -1,19 +1,17 @@
+#encoding: utf-8
 module UsuariosHelper
-=begin
-  def sign_in(user)
-    remember_token = Usuario.new_remember_token
-    user.update_attribute(:remember_token, Usuario.digest(remember_token))
-    self.current_user = user
-  end
 
-  def current_user=(user)
-    @current_user = user
+  def not_update_tipo_usuario
+    if @usuario.tipo_usuario == 1
+      @usuario.errors.add("Médico", "Ya estas registrado como Médico, no te puedes volver a registrar.")
+      return false
+    else
+      if @usuario.tipo_usuario == 2
+        @usuario.errors.add("Centro de Salud", "Ya estas registrado como Centro de Salud, no te puedes volver a registrar.")
+        return false
+      else
+        return true
+      end
+    end
   end
-
-  def current_user
-    remember_token = Usuarior.digest(cookies[:remember_token])
-    @current_user ||= Usuarior.find_by(remember_token: remember_token)
-  end
-=end
-
 end

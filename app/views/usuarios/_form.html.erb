@@ -1,4 +1,4 @@
-<% if @usuario.errors.any? %>
+<!--<% if @usuario.errors.any? %>
     <div id="error_explanation">
       <div class="alert alert-error">
         The form contains <%= pluralize(@usuario.errors.count, "error") %>.
@@ -9,34 +9,45 @@
         <% end %>
       </ul>
     </div>
-<% end %>
+<% end %>-->
+
+<%- if flash.any? %>
+    <%- flash.keys.each do |flash_key| %>
+        <%- next if flash_key.to_s == 'timedout' %>
+        <h3 style="color: #f30000; <%= flash_key %>">
+          <a class="close" data-dismiss="alert" href="#"> x</a>
+          <%= flash.discard(flash_key) %>
+        </h3>
+    <%- end %>
+<%- end %>
+
 <%= form_for @usuario, html: {class: "horizontal-form", role:"form"} do |f|  %>
   <% if signed_in? %>
         <h1>No se puede registrar nuevo usuario si se esta logueado</h1>
   <% else %>
-        <h1>Nuevo usuario</h1>
+        <h1>Registro de nuevo usuario</h1>
         <div class="form-group">
            <%= f.label :nombre, :class=>"col-sm-2 control-label" %>
           <div class="col-sm-10">
-            <%= f.text_field :nombre, :class=>"form-control" %><br>
+            <%= f.text_field :nombre, :class=>"form-control", :placeholder =>"Nombre" %><br>
           </div>
         </div>
         <div class="form-group">
           <%= f.label :email, :class=>"col-sm-2 control-label" %>
           <div class="col-sm-10">
-            <%= f.text_field :email, :class=>"form-control" %><br>
+            <%= f.text_field :email, :class=>"form-control", :placeholder =>"Email" %><br>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label :password, :class=>"col-sm-2 control-label" %>
+          <%= f.label "Contraseña", :class=>"col-sm-2 control-label" %>
           <div class="col-sm-10">
-            <%= f.password_field :password, :class=>"form-control" %><br>
+            <%= f.password_field :password, :class=>"form-control", :placeholder =>"Contraseña" %><br>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label :password_confirmation, :class=>"col-sm-2 control-label" %>
+          <%= f.label "Confirmar Contraseña", :class=>"col-sm-2 control-label" %>
           <div class="col-sm-10">
-            <%= f.password_field :password_confirmation, :class=>"form-control"%>
+            <%= f.password_field :password_confirmation, :class=>"form-control", :placeholder =>"Confirmar Contraseña" %>
           </div>
         </div>
         <div class="form-group">

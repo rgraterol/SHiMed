@@ -15,12 +15,12 @@
           <h2>No has completado tu registro, terminalo entrando en Editar Tipo de Cuenta</h2><br><br>
           <div><span class="glyphicon glyphicon-briefcase"></span>              <%= link_to "Editar Tipo de Cuenta", phase1_path(@usuario), :class => 'btn btn-default' %></div><br>
       <% else %>
-          <% if @usuario.tipo_usuario == "1" %>
+          <% if @usuario.tipo_usuario == 1 %>
               <div><span class="glyphicon glyphicon-briefcase"></span>              <%= link_to "Modificar Perfíl de Médico", edit_medico_path(@medico), :class => 'btn btn-default' %></div><br>
               <div><span class="glyphicon glyphicon-list-alt"></span>              <%= link_to "Editar Servicios Médicos Ofrecidos", editar_servicios_medicos_path(@medico), :class => 'btn btn-default' %></div><br>
           <% end %>
 
-          <% if @usuario.tipo_usuario == "2" %>
+          <% if @usuario.tipo_usuario == 2 %>
               <div><span class="glyphicon glyphicon-briefcase"></span>              <%= link_to "Modificar Información de Centro de Salud", edit_centro_salud_path(@centro_salud), :class => 'btn btn-default' %></div><br>
           <% end %>
       <% end %>

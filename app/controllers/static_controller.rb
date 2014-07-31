@@ -8,4 +8,7 @@ class StaticController < ApplicationController
   def info_cambiada
     current_usuario
   end
+
+  def already_registered
+  end
 end

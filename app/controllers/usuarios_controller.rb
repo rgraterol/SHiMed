@@ -12,11 +12,11 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1.json
   def show
     @usuario = Usuario.find(params[:id])
-    if @usuario.tipo_usuario == "1"
+    if @usuario.tipo_usuario == 1
       @medico = Medico.find_by_usuario_id(@usuario.id)
     end
 
-    if @usuario.tipo_usuario == "2"
+    if @usuario.tipo_usuario == 2
       @centro_salud = CentroSalud.find_by_usuario_id(@usuario.id)
     end
   end
@@ -34,6 +34,7 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(usuario_params)
+    @usuario.tipo_usuario = nil
     respond_to do |format|
       if @usuario.save
         if MailConfirm.recibido(@usuario).deliver
@@ -42,8 +43,11 @@ class UsuariosController < ApplicationController
           format.json { render :show, status: :created, location: @usuario }
         end
       else
-        format.html { render :new }
-        format.json { render :json => { :error => @usuario.errors.full_messages }, :status => 422 }
+        @usuario.errors.each do |name_, erro|
+          flash[name_] = erro
+        end
+        format.html { redirect_to new_usuario_path }
+        #format.json { render :json => { :error => @usuario.errors.full_messages }, :status => 422 }
       end
     end
   end
@@ -99,11 +103,11 @@ class UsuariosController < ApplicationController
   def ajustes
     if @usuario.tipo_usuario == nil
     else
-      if @usuario.tipo_usuario == "1"
+      if @usuario.tipo_usuario == 1
         @medico = Medico.find_by_usuario_id(@usuario.id)
       end
 
-      if @usuario.tipo_usuario == "2"
+      if @usuario.tipo_usuario == 2
         @centro_salud = CentroSalud.find_by_usuario_id(@usuario.id)
       end
     end

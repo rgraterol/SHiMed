@@ -21,6 +21,7 @@ class MedicosController < ApplicationController
 
   # GET /medicos/new
   def new
+    @medico = Medico.find_by_usuario_id(params[:id])
     @medico = Medico.new
   end
 
@@ -34,20 +35,34 @@ class MedicosController < ApplicationController
     @medico = Medico.new(medico_params)
     @medico.usuario_id = params[:usuario_id_aux]
     @usuario = Usuario.find(params[:usuario_id_aux])
-    @usuario.tipo_usuario = 1
     @medico.nombre=@usuario.nombre
     respond_to do |format|
-      if @medico.save
-        @usuario.rol_id = @medico.id
-        if @usuario.save
-          format.html { redirect_to @medico, notice: 'Medico was successfully created.' }
-          format.json { render :show, status: :created, location: @medico }
+      if not_update_tipo_usuario
+        if @medico.save
+          @usuario.tipo_usuario = 1
+          @usuario.rol_id = @medico.id
+          if @usuario.save
+            format.html { redirect_to @medico }
+          else
+            @medico.delete
+            @usuario.errors.each do |name_, erro|
+              flash[name_] = erro
+            end
+            format.html { redirect_to registro_medico_path(@usuario) }
+          end
+        else
+          @medico.errors.each do |name_, erro|
+            flash[name_] = erro
+          end
+          format.html { redirect_to registro_medico_path(@usuario) }
         end
       else
-        flash[:error]
-        format.html { redirect_to registro_medico_path(@usuario) }
-        format.json { render json: @medico.errors, status: :unprocessable_entity }
+        @usuario.errors.each do |name_, erro|
+          flash[name_] = erro
+        end
+        format.html { redirect_to already_registered_path}
       end
+
     end
   end
 
@@ -60,11 +75,12 @@ class MedicosController < ApplicationController
   def update
     respond_to do |format|
       if @medico.update(medico_params)
-        format.html { redirect_to info_cambiada_path, notice: 'Medico was successfully updated.' }
-        format.json { render :show, status: :ok, location: @medico }
+        format.html { redirect_to info_cambiada_path }
       else
-        format.html { render :edit }
-        format.json { render json: @medico.errors, status: :unprocessable_entity }
+        @medico.errors.each do |name_, erro|
+          flash[name_] = erro
+        end
+       format.html { render :edit }
       end
     end
   end

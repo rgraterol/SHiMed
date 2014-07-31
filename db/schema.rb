@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140728150527) do
     t.string   "telefono_casa"
     t.string   "telefono_celular"
     t.string   "telefono_oficina"
-    t.string   "sexo"
+    t.integer  "sexo"
     t.date     "fecha_nacimiento"
     t.string   "especialidad"
     t.string   "cmv"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140728150527) do
     t.string   "nombre"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "tipo_usuario"
+    t.integer  "tipo_usuario"
     t.integer  "medico_id",       default: 0
     t.integer  "centro_salud_id", default: 0
     t.datetime "created_at"

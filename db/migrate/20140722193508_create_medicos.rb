@@ -8,7 +8,7 @@ class CreateMedicos < ActiveRecord::Migration
       t.string :telefono_casa
       t.string :telefono_celular
       t.string :telefono_oficina
-      t.string :sexo
+      t.integer :sexo
       t.date :fecha_nacimiento
       t.string :especialidad
       t.string :cmv
