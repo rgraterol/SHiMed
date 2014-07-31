@@ -59,12 +59,9 @@ ActiveRecord::Schema.define(version: 20140728150527) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "tipo_usuario"
-    t.integer  "medico_id",       default: 0
-    t.integer  "centro_salud_id", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
-    t.string   "register_flag",   default: "0"
     t.integer  "rol_id",          default: 0
   end
 

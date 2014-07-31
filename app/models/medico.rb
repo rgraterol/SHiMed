@@ -24,7 +24,7 @@ class Medico < ActiveRecord::Base
   validates :especialidad, :presence => { :message => "El campo Especialidad es obligatorio" }
 
   validates :telefono_casa, format: {
-      with: /(\A^:(([0-9]{4,6})+-([0-9]{7,9}))\z)/i, :message => "Teléfono de Casa debe ir con el formato XXXX-XXXXXXX y solo puede contener números"
+      with: /(\A^([0-9]{4,6})+-([0-9]{7,9})\z)/i, :message => "Teléfono de Casa debe ir con el formato XXXX-XXXXXXX y solo puede contener números"
   }, :allow_blank => true
 
   validates :telefono_celular, format: {

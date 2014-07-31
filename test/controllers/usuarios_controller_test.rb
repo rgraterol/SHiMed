@@ -3,6 +3,12 @@ require 'test_helper'
 class UsuariosControllerTest < ActionController::TestCase
   setup do
     @usuario = usuarios(:one)
+    @update = {
+        nombre: 'Adriana',
+        email:  'adriana@gmail.com',
+        password: 'qwe123'
+
+    }
   end
 
   test "should get index" do

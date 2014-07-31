@@ -5,8 +5,6 @@ class CreateUsuarios < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.integer :tipo_usuario, default: nil
-      t.references :medico, default: 0
-      t.references :centro_salud, default: 0
       #t.string :remember_token
 
       t.timestamps
